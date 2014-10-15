@@ -4,15 +4,11 @@
 
 <h2>前言</h2>
 
-<hr />
-
 <p>环境：Mac 10.9. ； Git ; Ruby 1.9.3 ; mou</p>
 
 <p>推荐参考<a href="http://octopress.org/docs/setup/">Octopress官方指南</a>。</p>
 
 <h2>安装Octopress</h2>
-
-<hr />
 
 <h3>安装rvm</h3>
 
@@ -36,10 +32,183 @@ rvm rubygems latest
 
 <h3>安装Octopress</h3>
 
+<p>首先，下载Octopress：</p>
+
+<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
+</code></pre>
+
+<p>安装依赖项：</p>
+
+<pre><code>$ gem install bundler
+$ bundle install
+</code></pre>
+
+<p>我在执行bundle install的时候遇到错误，提示libffi install失败，其实不是libffi的问题，而是找不到make命令，需要Mac 安装Command Line Tools，其中带有GNU make功能。</p>
+
+<p>安装默认主题（个人感觉特别丑）：</p>
+
+<pre><code>$ rake install
+</code></pre>
+
 <h2>部署博客</h2>
 
-<hr />
+<h3>部署</h3>
+
+<p>完成上面的内容之后，只是把Octopress部署到了本地，并没有和Github连接。</p>
+
+<p>首先，你需要到<a href="">github</a>创建一个个人repo，命名格式一般是<code>username.github.io</code>.<br/>
+创建之后，就可以完成Github与Octopress连接：</p>
+
+<pre><code>$ rake setup_github_pages
+</code></pre>
+
+<p>过程中会要求你输入你的仓库地址，按照要求输入就可以了，比如我输入的是：</p>
+
+<pre><code>git@github.com:wanghongchuan/wanghongchuan.github.io.git
+</code></pre>
+
+<h3>检查配置</h3>
+
+<p>完成部署之后，最好检查一下目前存在哪些remote repo:</p>
+
+<pre><code>$ git remote -v
+</code></pre>
+
+<p>我的输出是：</p>
+
+<pre><code>octopress   git://github.com/imathis/octopress.git (fetch)
+octopress   git://github.com/imathis/octopress.git (push)
+origin   git@github.com:wanghongchuan/wanghongchuan.github.io.git (fetch)
+origin   git@github.com:wanghongchuan/wanghongchuan.github.io.git (push)
+</code></pre>
+
+<p>如果你的输出结果没有origin，你需要把按照下面的格式添加：</p>
+
+<pre><code>git remote add origin git@github.com:username/username.github.io.git
+</code></pre>
+
+<p>命名repo分支master为source：</p>
+
+<pre><code>$ git branch
+* master
+$ git branch -m master source
+$ git branch 
+* source
+</code></pre>
+
+<p>刚开始，对于不了解git的同学，对于branch、master、source，以及后面的add、commit、push等摸不着头脑，最好网上搜一下资料，理解一下。</p>
+
+<p>我们可以姑且这样理解（了解git的同学就不要看这一部分了，仅供参考，易于理解）:</p>
+
+<ul>
+<li>master:可以理解为你得repo的根目录</li>
+<li>branch:一个repo的根目录可以有多个分支</li>
+<li>source:本地都会生成一个source文件存放你的文件，对应于repo上也由一个source文件</li>
+<li>git add:就是把自己更改的内容进行添加</li>
+<li>git commit:就是提交最新程序的意思，用过SVN的就很好理解了</li>
+<li>git push origin source:把source更新到origin</li>
+<li>git pull:将git端的内容拉去到本地，git fetch实现功能，区别在于是否merge</li>
+</ul>
+
+
+<h2>创建博客</h2>
+
+<h3>生成博客</h3>
+
+<p>输入下面代码：</p>
+
+<pre><code>$ rake generate
+</code></pre>
+
+<p>执行生成，会生成相应的source文件在本地。这个时候你已经可以预览一下blog界面了：</p>
+
+<pre><code>$ rake preview
+</code></pre>
+
+<p>然后，在浏览器里面输入localhost:4000就可以看到了。<br/>
+接下来需要把生成后的代码上传到Github：</p>
+
+<pre><code>$ git add .
+$ git commit -m "your message"
+$ git push origin source
+</code></pre>
+
+<p>最后，完成部署。</p>
+
+<pre><code>$ rake deploy
+</code></pre>
+
+<p>现在，你可以在浏览器里输入username.github.io来访问自己blog了，第一次打开可能会有点慢，需要等一等。</p>
+
+<h3>博客配置</h3>
+
+<p>你可以根据自己的信息配置blog，包括标题、姓名等等。</p>
+
+<pre><code>$ vim ~/octopress/_coinfig.yml
+</code></pre>
+
+<p>修改里面的内容就OK。
+我们会发现默认的主题非常丑，你可以到<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">这里</a>寻找自己喜欢的主题。比如我的诗<a href="https://github.com/macjasp/cleanpress">cleanpress主题</a>：</p>
+
+<pre><code>$ cd octopress
+$ git clone git://github.com/macjasp/ cleanpress.git .themes/cleanpress
+$ rake install['cleanpress']
+$ rake generate
+</code></pre>
+
+<p>然后，部署到git上：</p>
+
+<pre><code>$ git add .
+$ git commit -m "your message"
+$ git push origin source
+
+$rake deploy
+</code></pre>
+
+<p>这时，你可以到username.github.io上看一下最新的blog界面了。</p>
 
 <h2>写博客</h2>
 
-<hr />
+<h3>创建博客</h3>
+
+<p>现在，你可以写自己的第一篇博客了，比如这就是我的第一篇博客<a href="http://wanghongchuan.github.io">基于Github Pages和Octopress搭建自己的blog</a>。</p>
+
+<pre><code>$ rake new_post['基于Github Pages和Octopress搭建自己的blog']
+</code></pre>
+
+<p>你可以在<code>~/source/_posts</code>下看到新生成的markdown文件。<br/>
+这时候你的博文只有题目等少量信息，不过已经可以预览一下了。</p>
+
+<pre><code>$ rake generate
+$ rake preview
+</code></pre>
+
+<p>进入localhost：4000。</p>
+
+<h3>编辑博客</h3>
+
+<p>编辑博客只要打开markdown文件直接编辑就可以了，非常简单。</p>
+
+<p>个人推荐使用Mac端使用<a href="http://25.io/mou/">Mou</a>进行markdown文件编辑，可以一边编辑一边预览效果。学习markdown语法也非常简单，直接查看Mou的help文件，完成可以掌握markdown文件的基本语法了。</p>
+
+<p>可能有人想知道，怎样在terminal上直接打开markdown文件并编辑呢?</p>
+
+<pre><code>$ open -a mou your-markdown-file-name
+</code></pre>
+
+<p>最后，还是老套路：</p>
+
+<pre><code>$ rake generate
+$ git add .
+$ git commit -m "your message"
+$ git push origin source
+$ rake deploy
+</code></pre>
+
+<p>你可以欣赏自己的第一篇blog了。</p>
+
+<h2>定制博客</h2>
+
+<p>定制自己的博客，主要是完成评论、分享、定制域名、排版等功能，目前我还没有对自己的博客动刀，想深入了解的可以参照<a href="http://biaobiaoqi.me/blog/2013/07/10/decorate-octopress/">这里</a>。</p>
+
+<p>好了，我也要欣赏一下自己的第一篇blog去了。</p>
