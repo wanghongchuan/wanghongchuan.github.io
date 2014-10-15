@@ -4,7 +4,7 @@
   <title><![CDATA[王洪川]]></title>
   <link href="http://wanghongchuan.github.io/atom.xml" rel="self"/>
   <link href="http://wanghongchuan.github.io/"/>
-  <updated>2014-10-14T19:57:37+08:00</updated>
+  <updated>2014-10-15T11:32:40+08:00</updated>
   <id>http://wanghongchuan.github.io/</id>
   <author>
     <name><![CDATA[王洪川]]></name>
@@ -14,11 +14,55 @@
 
   
   <entry>
-    <title type="html"><![CDATA[基于Github Pages和Octopress搭建自己的blog]]></title>
+    <title type="html"><![CDATA[Ji Yu Github Pageshe Octopressda Jian Zi Ji De Blog]]></title>
     <link href="http://wanghongchuan.github.io/blog/2014/10/14/ji-yu-github-pageshe-octopressda-jian-zi-ji-de-blog/"/>
-    <updated>2014-10-14T19:57:04+08:00</updated>
+    <updated>2014-10-14T00:00:00+08:00</updated>
     <id>http://wanghongchuan.github.io/blog/2014/10/14/ji-yu-github-pageshe-octopressda-jian-zi-ji-de-blog</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<h1>基于Github Pages和Octopress搭建自己的blog</h1>
+
+<hr />
+
+<h2>前言</h2>
+
+<hr />
+
+<p>环境：Mac 10.9. ； Git ; Ruby 1.9.3 ; mou</p>
+
+<p>推荐参考<a href="http://octopress.org/docs/setup/">Octopress官方指南</a>。</p>
+
+<h2>安装Octopress</h2>
+
+<hr />
+
+<h3>安装rvm</h3>
+
+<p>由于Octopress需要Ruby，而Octopress要求的版本是1.9.3,像Mac自带的Ruby版本过高，这里安装的是Ruby1.9.3-p125。<br/>
+安装Ruby需要先安装rvm或者rbenv，这里以rvm为例说明(本人使用rbenv安装Ruby过程中出现了错误，因此转投rvm)。<br/>
+下载RVM：</p>
+
+<pre><code>curl -L https://get.rvm.io | bash -s stable --ruby
+</code></pre>
+
+<h3>安装Ruby</h3>
+
+<p>安装Ruby 1.9.3：</p>
+
+<pre><code>rvm install 1.9.3
+rvm use 1.9.3
+rvm rubygems latest
+</code></pre>
+
+<p>安装之后，需要指定使用1.9.3版本。</p>
+
+<h3>安装Octopress</h3>
+
+<h2>部署博客</h2>
+
+<hr />
+
+<h2>写博客</h2>
+
+<hr />
 ]]></content>
   </entry>
   
