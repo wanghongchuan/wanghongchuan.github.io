@@ -5,8 +5,17 @@ date: 2014-10-14 19:57:04 +0800
 comments: true
 categories:入门 
 ---
+>假如你是一个小白，如何一步步搭建自己的博客？
 
-#基于Github Pages和Octopress搭建自己的blog
+- 前言
+- 安装Octopress
+- 部署博客到git
+- 创建本地博客
+- 写第一篇博客
+- 定制博客主题
+- 可能遇到的问题
+
+<!--more-->
 ___
 ##前言
 环境：Mac 10.9. ； Git ; Ruby 1.9.3 ; mou  
