@@ -4,7 +4,7 @@
   <title><![CDATA[王洪川]]></title>
   <link href="http://wanghongchuan.github.io/atom.xml" rel="self"/>
   <link href="http://wanghongchuan.github.io/"/>
-  <updated>2014-10-23T23:20:25+08:00</updated>
+  <updated>2014-10-24T16:30:34+08:00</updated>
   <id>http://wanghongchuan.github.io/</id>
   <author>
     <name><![CDATA[王洪川]]></name>
@@ -18,7 +18,21 @@
     <link href="http://wanghongchuan.github.io/blog/2014/10/14/ji-yu-github-pageshe-octopressda-jian-zi-ji-de-blog/"/>
     <updated>2014-10-14T00:00:00+08:00</updated>
     <id>http://wanghongchuan.github.io/blog/2014/10/14/ji-yu-github-pageshe-octopressda-jian-zi-ji-de-blog</id>
-    <content type="html"><![CDATA[<h1>基于Github Pages和Octopress搭建自己的blog</h1>
+    <content type="html"><![CDATA[<blockquote><p>假如你是一个小白，如何一步步搭建自己的博客？</p></blockquote>
+
+<ul>
+<li>前言</li>
+<li>安装Octopress</li>
+<li>部署博客到git</li>
+<li>创建本地博客</li>
+<li>写第一篇博客</li>
+<li>定制博客主题</li>
+<li>可能遇到的问题</li>
+</ul>
+
+
+<!--more-->
+
 
 <hr />
 
